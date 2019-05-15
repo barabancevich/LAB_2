@@ -1,6 +1,3 @@
-/*
- * Decompiled with CFR 0.139.
- */
 import java.awt.BasicStroke;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -16,6 +13,10 @@ import java.awt.geom.AffineTransform;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+/**
+ *
+ * @author Yegor
+ */
 public class TitlesPanel
 extends JPanel
 implements ActionListener {
@@ -25,13 +26,21 @@ implements ActionListener {
     private int start_angle = 0;
     private int shape;
 
+    /**
+     *
+     * @param _shape
+     */
     public TitlesPanel(int _shape) {
-        this.shape = _shape;
+        this.shape = _shape;  // Переменная для использования в файле  ShapeFactory.java для  выбора параметров фигуры (SWICH-CASE)
         this.animation = new Timer(50, this);
         this.animation.setInitialDelay(50);
         this.animation.start();
     }
 
+    /**
+     *
+     * @param arg0
+     */
     @Override
     public void actionPerformed(ActionEvent arg0) {
         if (this.is_done) {
@@ -39,7 +48,7 @@ implements ActionListener {
         }
     }
 
-    private void doDrawing(Graphics g) {
+    private void doDrawing(Graphics g) {  // Вращение фигур 
         this.is_done = false;
         this.g2d = (Graphics2D)g;
         this.g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -71,10 +80,13 @@ implements ActionListener {
         this.is_done = true;
     }
 
+    /**
+     *
+     * @param g
+     */
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         this.doDrawing(g);
     }
 }
-
